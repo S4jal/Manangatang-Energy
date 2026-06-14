@@ -1,0 +1,419 @@
+/*
+Theme Name: Manangatang Energy
+Theme URI: https://manangatangenergy.com.au
+Author: Mehedi H Sajal
+Author URI: https://manangatangenergy.com.au
+Description: Bespoke theme for the Manangatang Energy Battery Energy Storage System project website. A faithful port of the marketing site with Tailwind utilities, Lucide icons and rich scroll/parallax interactions. Pairs with the "Manangatang Energy Core" plugin for News, Documents and FAQ content types.
+Version: 1.0.1
+Requires at least: 6.0
+Tested up to: 6.7
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: manangatang-energy
+*/
+
+/* ============================================================
+   Manangatang Energy — custom styles & animations
+   (Tailwind utilities live in the markup; this file holds the
+    keyframes, base type and motion that Tailwind doesn't ship.)
+   ============================================================ */
+
+:root {
+  --grass-400: #4cc471;
+  --grass-500: #2faf59;
+  --grass-600: #1f8f47;
+  --ink-900:  #0a1c30;
+  --lime:     #b9d44a;
+}
+
+body  { font-family: "Inter", sans-serif; }
+h1, h2, h3, .font-display { font-family: "Plus Jakarta Sans", sans-serif; }
+
+::selection { background: var(--lime); color: var(--ink-900); }
+
+/* ---------- KEYFRAMES ---------- */
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes slideRight {
+  from { opacity: 0; transform: translateX(-24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes kenburns {
+  from { transform: scale(1)    translate(0, 0); }
+  to   { transform: scale(1.12) translate(-1.5%, -1.5%); }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+@keyframes pulseRing {
+  0%   { transform: scale(.8); opacity: .8; }
+  70%  { transform: scale(2.2); opacity: 0; }
+  100% { opacity: 0; }
+}
+@keyframes spinSlow { to { transform: rotate(360deg); } }
+@keyframes drawDash { to { stroke-dashoffset: 0; } }
+@keyframes barFlow {
+  0%, 100% { height: 30%; }
+  50%      { height: 90%; }
+}
+
+/* ---------- HERO ENTRANCE (staggered) ---------- */
+.hero-img       { animation: kenburns 18s ease-out forwards; }
+.hero-anim      { opacity: 0; animation: fadeUp .9s cubic-bezier(.2,.7,.2,1) forwards; }
+.hero-anim.d1   { animation-delay: .15s; }
+.hero-anim.d2   { animation-delay: .35s; }
+.hero-anim.d3   { animation-delay: .55s; }
+.hero-anim.d4   { animation-delay: .75s; }
+.hero-anim.d5   { animation-delay: .95s; }
+
+/* tagline — solid bright green, always readable on the dark hero */
+.shimmer-text {
+  color: #7af0a8;
+  text-shadow: 0 1px 20px rgba(122, 240, 168, 0.25);
+}
+
+/* floating label chips on hero */
+.float-chip   { animation: floaty 6s ease-in-out infinite; }
+.float-chip.b { animation-delay: 1.5s; animation-duration: 7s; }
+
+/* ping ring on the live dot */
+.ping-ring::after {
+  content: "";
+  position: absolute; inset: 0;
+  border-radius: 9999px;
+  background: var(--grass-400);
+  animation: pulseRing 2.2s cubic-bezier(0,.2,.8,1) infinite;
+}
+
+/* ---------- SCROLL REVEAL ---------- */
+.reveal      { opacity: 0; transform: translateY(28px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
+.reveal.left { transform: translateX(-40px); }
+.reveal.right{ transform: translateX(40px); }
+.reveal.zoom { transform: scale(.94); }
+.reveal.in   { opacity: 1; transform: none; }
+
+/* ---------- CARDS: animated sheen on hover ---------- */
+.sheen { position: relative; overflow: hidden; }
+.sheen::before {
+  content: "";
+  position: absolute; top: 0; left: -75%;
+  width: 50%; height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,.55), transparent);
+  transform: skewX(-20deg);
+  transition: left .7s ease;
+}
+.sheen:hover::before { left: 130%; }
+
+/* icon spin / wobble on card hover */
+.group:hover .icon-spin { animation: spinSlow 1.2s linear; }
+
+/* ---------- CAROUSEL ---------- */
+.slides { display: flex; transition: transform .7s cubic-bezier(.6,.05,.2,1); }
+.slide  { min-width: 100%; }
+
+/* ---------- BATTERY: animated energy-flow connector ---------- */
+@keyframes travel { from { left: -2%; } to { left: 102%; } }
+
+.flow-track {
+  background-image: linear-gradient(90deg, #2faf59, #b9d44a, #7af0a8, #2faf59);
+  background-size: 200% 100%;
+  animation: shimmer 4s linear infinite;
+}
+.flow-dot {
+  position: absolute;
+  top: 50%;
+  height: 12px; width: 12px;
+  margin-top: -6px;
+  border-radius: 9999px;
+  background: #d6ffe4;
+  box-shadow: 0 0 14px 4px rgba(185, 212, 74, 0.7);
+  animation: travel 3.6s linear infinite;
+}
+.flow-dot.d2 { animation-delay: 1.2s; }
+.flow-dot.d3 { animation-delay: 2.4s; }
+
+/* ============================================================
+   MODERN: scroll progress, floating shapes, tilt, magnetic
+   ============================================================ */
+
+/* preloader */
+#preloader {
+  transition: opacity .6s ease, visibility .6s ease;
+}
+#preloader.done {
+  opacity: 0;
+  visibility: hidden;
+}
+body.loading { overflow: hidden; }
+
+/* scroll progress bar */
+#progress {
+  position: fixed; top: 0; left: 0; z-index: 60;
+  height: 3px; width: 0;
+  background: linear-gradient(90deg, #1f8f47, #2faf59, #b9d44a);
+  box-shadow: 0 0 12px rgba(185, 212, 74, .6);
+  will-change: width;
+}
+
+/* morphing + drifting blob */
+@keyframes blobMorph {
+  0%, 100% { border-radius: 42% 58% 63% 37% / 41% 44% 56% 59%; }
+  50%      { border-radius: 58% 42% 38% 62% / 57% 63% 37% 43%; }
+}
+@keyframes driftXY {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  33%  { transform: translate(18px, -20px) rotate(6deg); }
+  66%  { transform: translate(-16px, 12px) rotate(-5deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+@keyframes floatY  { 0%, 100% { transform: translateY(0); }   50% { transform: translateY(-22px); } }
+@keyframes floatY2 { 0%, 100% { transform: translateY(0); }   50% { transform: translateY(14px); } }
+@keyframes spinVerySlow { to { transform: rotate(360deg); } }
+@keyframes twinkle { 0%, 100% { opacity: .25; transform: scale(1); } 50% { opacity: 1; transform: scale(1.5); } }
+
+.blob       { animation: blobMorph 16s ease-in-out infinite, driftXY 20s ease-in-out infinite; will-change: transform, border-radius; }
+.orb        { animation: floatY 7s ease-in-out infinite; }
+.orb.slow   { animation: floatY 11s ease-in-out infinite; }
+.orb.alt    { animation: floatY2 9s ease-in-out infinite; }
+.ring-spin  { animation: spinVerySlow 34s linear infinite; }
+.particle   { animation: twinkle 4s ease-in-out infinite; }
+
+/* parallax wrapper keeps JS transform; child can still float */
+[data-parallax] { will-change: transform; }
+
+/* glass stat badge */
+.glass {
+  background: rgba(255, 255, 255, .7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, .6);
+}
+
+/* 3D tilt cards */
+.tilt {
+  transform-style: preserve-3d;
+  transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s ease;
+  will-change: transform;
+}
+.tilt .tilt-pop { transform: translateZ(40px); transform-style: preserve-3d; }
+
+/* magnetic buttons */
+.magnetic { transition: transform .25s cubic-bezier(.2,.7,.2,1); will-change: transform; }
+
+/* ---------- MAP dashed line draw ---------- */
+.draw-line { stroke-dasharray: 600; stroke-dashoffset: 600; }
+.draw-line.in { animation: drawDash 2s ease forwards; }
+
+/* ============================================================
+   MODERN POLISH — multi-page (heroes, reveals, nav, cards)
+   ============================================================ */
+
+/* nav entrance on every page load */
+@keyframes navDrop { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
+#nav nav { animation: navDrop .7s cubic-bezier(.2,.7,.2,1) both; }
+
+/* gradient hero headings (dark navy → deep green) */
+.h-gradient {
+  background: linear-gradient(170deg, #0a1c30 0%, #16324d 52%, #1f8f47 120%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+/* smoother scroll-reveal: add a subtle de-blur to the existing motion */
+.reveal {
+  transition: opacity .8s cubic-bezier(.2,.7,.2,1),
+              transform .8s cubic-bezier(.2,.7,.2,1),
+              filter .8s ease;
+  filter: blur(8px);
+}
+.reveal.in { filter: blur(0); }
+
+/* generic hover lift for cards/figures */
+.hover-lift { transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s ease; will-change: transform; }
+.hover-lift:hover { transform: translateY(-6px); }
+
+/* pulsing accent dot */
+@keyframes glowPulse { 0%,100% { box-shadow: 0 0 0 0 rgba(76,196,113,.5); } 50% { box-shadow: 0 0 0 9px rgba(76,196,113,0); } }
+.glow-dot { animation: glowPulse 2.4s ease-in-out infinite; }
+
+/* animated gradient sweep (eyebrows / accents) */
+.grad-sweep {
+  background: linear-gradient(90deg, #1f8f47, #2faf59, #b9d44a, #2faf59, #1f8f47);
+  background-size: 200% auto;
+  animation: shimmer 5s linear infinite;
+}
+
+/* image inside a .group lifts/zooms a touch smoother */
+.zoom-img { transition: transform .8s cubic-bezier(.2,.7,.2,1); will-change: transform; }
+.group:hover .zoom-img { transform: scale(1.06); }
+
+/* ============================================================
+   NEXT-GEN LAYER — mesh heroes, parallax, grain, marquee
+   ============================================================ */
+
+/* film-grain overlay across the whole site */
+body::after {
+  content: "";
+  position: fixed; inset: 0; z-index: 70;
+  pointer-events: none;
+  background-image: url("assets/img/noise.svg");
+  background-size: 180px 180px;
+  opacity: .035;
+  mix-blend-mode: multiply;
+}
+
+/* layered hero backgrounds */
+@keyframes gridDrift { from { background-position: 0 0; } to { background-position: 48px 48px; } }
+@keyframes meshShift {
+  0%,100% { transform: translate3d(0,0,0) scale(1); }
+  50%     { transform: translate3d(2%, -2%, 0) scale(1.08); }
+}
+
+.hero-grid {
+  background-image: url("assets/img/grid.svg");
+  background-size: 48px 48px;
+  -webkit-mask-image: radial-gradient(120% 90% at 50% 0%, #000 35%, transparent 78%);
+          mask-image: radial-gradient(120% 90% at 50% 0%, #000 35%, transparent 78%);
+  animation: gridDrift 9s linear infinite;
+  opacity: .9;
+}
+.hero-mesh {
+  background:
+    radial-gradient(40% 55% at 18% 18%, rgba(47,175,89,.20), transparent 60%),
+    radial-gradient(45% 60% at 85% 22%, rgba(185,212,74,.18), transparent 62%),
+    radial-gradient(50% 60% at 70% 90%, rgba(76,196,113,.14), transparent 60%);
+  filter: blur(8px);
+  animation: meshShift 18s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* pointer / scroll depth parallax */
+[data-depth] { will-change: transform; transition: transform .25s cubic-bezier(.2,.7,.2,1); }
+
+/* animated gradient ring on hover for tilt cards (site-wide, zero markup) */
+.tilt { position: relative; }
+.tilt::after {
+  content: "";
+  position: absolute; inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: linear-gradient(130deg, #4cc471, #b9d44a, transparent 60%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+          mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  opacity: 0;
+  transition: opacity .35s ease;
+  pointer-events: none;
+}
+.tilt:hover::after { opacity: 1; }
+
+/* scroll-down cue */
+@keyframes cueBob { 0%,100% { transform: translateY(0); opacity:.5;} 50% { transform: translateY(7px); opacity:1; } }
+.scroll-cue { animation: cueBob 1.8s ease-in-out infinite; }
+
+/* marquee ticker */
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.marquee { display: flex; width: max-content; animation: marquee 28s linear infinite; }
+.marquee-wrap:hover .marquee { animation-play-state: paused; }
+
+/* gradient text sweep utility (animated) */
+.text-sweep {
+  background: linear-gradient(90deg,#1f8f47,#2faf59,#b9d44a,#2faf59,#1f8f47);
+  background-size: 200% auto;
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent; -webkit-text-fill-color: transparent;
+  animation: shimmer 6s linear infinite;
+}
+
+/* word-by-word hero reveal */
+.word { display: inline-block; opacity: 0; transform: translateY(40%) rotate(2deg); animation: wordUp .7s cubic-bezier(.2,.8,.2,1) forwards; }
+@keyframes wordUp { to { opacity: 1; transform: none; } }
+
+/* fancy underline link */
+.ux-link { background-image: linear-gradient(#1f8f47,#1f8f47); background-size: 0% 2px; background-position: 0 100%; background-repeat: no-repeat; transition: background-size .35s ease; }
+.ux-link:hover { background-size: 100% 2px; }
+
+/* ============================================================
+   CONTACT FORM 7 — match the rounded theme inputs
+   ============================================================ */
+.mec-cf7 .mec-grid-2 { display: grid; gap: 1.25rem; }
+@media (min-width: 640px) { .mec-cf7 .mec-grid-2 { grid-template-columns: 1fr 1fr; } }
+.mec-cf7 .wpcf7-form p { margin: 0 0 1.25rem; }
+.mec-cf7 label { display: block; font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: rgba(22,50,77,.7); }
+.mec-cf7 .wpcf7-form-control-wrap { display: block; margin-top: .5rem; }
+.mec-cf7 input[type="text"],
+.mec-cf7 input[type="email"],
+.mec-cf7 input[type="tel"],
+.mec-cf7 select,
+.mec-cf7 textarea {
+  width: 100%;
+  border-radius: .75rem;
+  border: 1px solid #d6deea;
+  background: #fff;
+  padding: .75rem 1rem;
+  font-size: .875rem;
+  color: #0a1c30;
+  outline: none;
+  transition: border-color .2s, box-shadow .2s;
+  font-family: "Inter", sans-serif;
+}
+.mec-cf7 textarea { resize: none; min-height: 120px; }
+.mec-cf7 input:focus,
+.mec-cf7 select:focus,
+.mec-cf7 textarea:focus { border-color: #4cc471; box-shadow: 0 0 0 2px rgba(76,196,113,.2); }
+.mec-cf7 input::placeholder,
+.mec-cf7 textarea::placeholder { color: rgba(22,50,77,.4); }
+.mec-cf7 .wpcf7-submit {
+  display: inline-flex; width: 100%; justify-content: center; align-items: center; gap: .5rem;
+  border-radius: .75rem; background: #0a1c30; color: #fff;
+  padding: .875rem 1.5rem; font-size: .875rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .025em; cursor: pointer; border: 0;
+  box-shadow: 0 10px 15px -3px rgba(10,28,48,.2); transition: background .2s;
+}
+.mec-cf7 .wpcf7-submit:hover { background: #102740; }
+.mec-cf7 .wpcf7-spinner { margin: .6rem auto 0; display: block; }
+.mec-cf7 .wpcf7-response-output {
+  border-radius: .75rem; margin: 0; padding: .75rem 1rem; font-size: .85rem;
+}
+
+/* ---------- Footer nav menu (matches the hardcoded links) ---------- */
+.me-footer-menu { list-style: none; margin: 1.25rem 0 0; padding: 0; }
+.me-footer-menu li { line-height: 1.2; }
+.me-footer-menu a { color: rgba(214, 222, 234, .75); font-size: .875rem; transition: color .2s; text-decoration: none; }
+.me-footer-menu a:hover { color: #4cc471; }
+
+/* ---------- WordPress core / editor content ---------- */
+.mec-prose { font-size: 1.05rem; line-height: 1.85; color: rgba(22,50,77,.9); }
+.mec-prose p { margin: 0 0 1.5rem; }
+.mec-prose h2 { font-size: 1.6rem; font-weight: 800; color: #0a1c30; margin: 2rem 0 .8rem; }
+.mec-prose h3 { font-size: 1.25rem; font-weight: 700; color: #0a1c30; margin: 1.6rem 0 .6rem; }
+.mec-prose a { color: #1a7239; text-decoration: underline; text-underline-offset: 2px; }
+.mec-prose ul { list-style: disc; padding-left: 1.4rem; margin: 0 0 1.5rem; }
+.mec-prose img { border-radius: 1rem; }
+
+/* ---------- accessibility: respect reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+  }
+  .reveal { opacity: 1; transform: none; filter: none !important; }
+  #nav nav, .hero-grid, .hero-mesh, .marquee, .word { animation: none !important; }
+  .word { opacity: 1; transform: none; }
+  body::after { display: none; }
+}
