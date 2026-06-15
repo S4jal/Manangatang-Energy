@@ -98,7 +98,15 @@ $me_img = get_template_directory_uri() . '/assets/img';
 							<div class="overflow-hidden">
 								<img src="<?php echo esc_url( $me_mp['image'] ); ?>" alt="" class="<?php echo esc_attr( $me_asp ); ?> w-full bg-white object-contain p-2 transition duration-700 group-hover:scale-105" />
 							</div>
-							<figcaption class="p-6 text-sm leading-relaxed text-ink-700/75"><?php echo esc_html( $me_mp['caption'] ?? '' ); ?></figcaption>
+							<figcaption class="p-6 text-sm leading-relaxed text-ink-700/75">
+								<?php if ( 0 === $me_mi ) : ?>
+									<div class="mb-3 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-ink-700/80">
+										<span class="flex items-center gap-2"><span class="h-3 w-3 shrink-0 rounded-sm bg-[#e9b949]"></span> Site</span>
+										<span class="flex items-center gap-2"><svg viewBox="0 0 24 24" fill="#e3342f" class="h-3 w-3 shrink-0" aria-hidden="true"><path d="M12 2l2.95 5.98 6.6.96-4.77 4.65 1.13 6.57L12 17.02 6.09 20.16l1.13-6.57L2.45 8.94l6.6-.96L12 2z"/></svg> Proposed BESS location</span>
+									</div>
+								<?php endif; ?>
+								<?php echo esc_html( $me_mp['caption'] ?? '' ); ?>
+							</figcaption>
 						</figure>
 					<?php endforeach; ?>
 				</div>

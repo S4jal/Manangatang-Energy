@@ -80,7 +80,7 @@ $me_img = get_template_directory_uri() . '/assets/img';
 				<div class="reveal left relative">
 					<div data-parallax="-0.05" class="orb pointer-events-none absolute -left-6 -top-6 -z-10 h-28 w-28 rounded-full bg-gradient-to-br from-grass-400/40 to-lime-accent/20 blur-xl"></div>
 					<div class="reveal zoom group overflow-hidden rounded-3xl border border-ink-100 shadow-2xl shadow-ink-900/10">
-						<img src="<?php echo esc_url( me_opt( 'about_safety_image', $me_img . '/battery-units.jpg' ) ); ?>" alt="White battery storage containers beside solar panels under a clear blue sky"
+						<img src="<?php echo esc_url( me_opt( 'about_safety_image', 'https://manangatangenergy.com.au/wp-content/uploads/2026/06/Manangatang-Site.jpg' ) ); ?>" alt="Aerial view of the Manangatang site"
 							class="aspect-[5/4] w-full object-cover transition duration-700 group-hover:scale-105" />
 					</div>
 				</div>

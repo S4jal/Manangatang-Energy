@@ -259,9 +259,8 @@ $site_url     = $me_site ? get_permalink( $me_site ) : '#';
 							class="aspect-[16/10] w-full object-cover transition duration-700 group-hover:scale-105" />
 					</div>
 					<div class="mt-4 space-y-2 text-xs text-ink-700/80">
-						<div class="flex items-center gap-2"><span class="h-2.5 w-2.5 rounded-full bg-grass-500"></span> Proposed BESS Location</div>
-						<div class="flex items-center gap-2"><span class="h-0 w-5 border-t-2 border-dashed border-[#c0392b]"></span> Approximate Land Boundary</div>
-						<div class="flex items-center gap-2"><span class="h-0 w-5 border-t-2 border-dotted border-ink-900"></span> 220kV Transmission Line</div>
+						<div class="flex items-center gap-2"><svg viewBox="0 0 24 24" fill="#e3342f" class="h-3 w-3 shrink-0" aria-hidden="true"><path d="M12 2l2.95 5.98 6.6.96-4.77 4.65 1.13 6.57L12 17.02 6.09 20.16l1.13-6.57L2.45 8.94l6.6-.96L12 2z"/></svg> Proposed BESS Location</div>
+						<div class="flex items-center gap-2"><span class="h-3 w-3 shrink-0 rounded-sm bg-[#e9b949]"></span> Approximate Land Boundary</div>
 					</div>
 				</div>
 
