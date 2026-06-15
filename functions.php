@@ -329,34 +329,10 @@ function me_about_safety() {
  */
 function me_default_about_safety() {
 	return array(
-		array( 'text' => 'Compliant with AEMO grid connection requirements' ),
-		array( 'text' => 'Multi-layer monitoring: cell, module, container, and site level' ),
-		array( 'text' => 'Site-wide fire detection and emergency response plan developed with CFA' ),
-		array( 'text' => 'Acoustic design targeting compliance with EPA Victoria noise limits' ),
-	);
-}
-
-/**
- * About page — project timeline. Each: array( 'year', 'title', 'text' ).
- *
- * @return array[]
- */
-function me_about_timeline() {
-	$raw = me_opt( 'about_timeline' );
-	$i   = $raw ? json_decode( $raw, true ) : array();
-	return ( is_array( $i ) && ! empty( $i ) ) ? $i : me_default_about_timeline();
-}
-
-/**
- * @return array[]
- */
-function me_default_about_timeline() {
-	return array(
-		array( 'year' => '2024', 'title' => 'Feasibility & site assessment', 'text' => 'Grid studies, land options secured, preliminary environmental assessment.' ),
-		array( 'year' => '2025', 'title' => 'Development & approvals', 'text' => 'Planning permit lodged with Mildura Rural City Council, Environmental Effects referral, AEMO connection studies.' ),
-		array( 'year' => '2026', 'title' => 'Community consultation', 'text' => 'Information sessions, submissions, Community Benefit Fund design, Aboriginal Cultural Heritage Management Plan.' ),
-		array( 'year' => '2026 – 2027', 'title' => 'Construction', 'text' => 'Civil works, container installation, switchyard commissioning. Peak workforce of ~150.' ),
-		array( 'year' => 'Q4 2027', 'title' => 'Operations', 'text' => 'Commercial operation date. Ongoing local employment for site monitoring and maintenance.' ),
+		array( 'icon' => 'check-circle-2', 'text' => 'Compliant with AEMO grid connection requirements' ),
+		array( 'icon' => 'activity', 'text' => 'Multi-layer monitoring: cell, module, container, and site level' ),
+		array( 'icon' => 'flame', 'text' => 'Site-wide fire detection and emergency response plan developed with CFA' ),
+		array( 'icon' => 'volume-2', 'text' => 'Acoustic design targeting compliance with EPA Victoria noise limits' ),
 	);
 }
 

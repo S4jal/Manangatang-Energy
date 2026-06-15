@@ -367,7 +367,6 @@ function me_customize_register( $wp ) {
 	me_cz_text( $wp, 'me_sec_about', 'about_hero_subtitle', __( 'Hero subtitle', 'manangatang-energy' ), 'The Manangatang Battery Energy Storage System (BESS) will store renewable energy generated across the state and release it during peak demand — supporting reliability, lowering prices, and accelerating the retirement of coal-fired generation.', 'textarea' );
 	me_cz_toggle( $wp, 'me_sec_about', 'about_show_specs', __( 'Show overview + specs', 'manangatang-energy' ) );
 	me_cz_toggle( $wp, 'me_sec_about', 'about_show_safety', __( 'Show “Designed for safety”', 'manangatang-energy' ) );
-	me_cz_toggle( $wp, 'me_sec_about', 'about_show_timeline', __( 'Show project timeline', 'manangatang-energy' ) );
 
 	/* ---------- The Site ---------- */
 	$wp->add_section( 'me_sec_site', array( 'title' => __( 'The Site', 'manangatang-energy' ), 'panel' => 'me_pages', 'priority' => 30 ) );
@@ -474,6 +473,8 @@ function me_icon_choices() {
 		'linkedin', 'facebook', 'twitter', 'instagram', 'youtube', 'github', 'twitch', 'rss',
 		// Brand / misc.
 		'zap', 'battery-charging', 'sun', 'leaf', 'shield', 'check-circle-2', 'star', 'heart', 'dot',
+		// Safety / monitoring.
+		'shield-check', 'siren', 'flame', 'bell', 'activity', 'volume-2', 'cable', 'alert-triangle', 'eye', 'lock', 'thermometer', 'wrench',
 	);
 	return apply_filters( 'me_icon_choices', $icons );
 }

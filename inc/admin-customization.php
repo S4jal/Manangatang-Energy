@@ -301,27 +301,8 @@ function me_page_schema() {
 							'add_label' => __( 'Add item', 'manangatang-energy' ),
 							'default'   => me_default_about_safety(),
 							'subfields' => array(
+								array( 'key' => 'icon', 'type' => 'icon', 'label' => __( 'Icon', 'manangatang-energy' ) ),
 								array( 'key' => 'text', 'type' => 'text', 'label' => __( 'Text', 'manangatang-energy' ) ),
-							),
-						),
-					),
-				),
-				array(
-					'label'  => __( 'Project timeline', 'manangatang-energy' ),
-					'fields' => array(
-						array( 'key' => 'about_show_timeline', 'label' => __( 'Show this section', 'manangatang-energy' ), 'type' => 'toggle' ),
-						array( 'key' => 'about_timeline_eyebrow', 'label' => __( 'Eyebrow', 'manangatang-energy' ), 'type' => 'text', 'default' => 'Project Timeline' ),
-						array( 'key' => 'about_timeline_heading', 'label' => __( 'Heading', 'manangatang-energy' ), 'type' => 'text', 'default' => 'From feasibility to first dispatch.' ),
-						array(
-							'key'       => 'about_timeline',
-							'label'     => __( 'Timeline entries', 'manangatang-energy' ),
-							'type'      => 'repeater',
-							'add_label' => __( 'Add entry', 'manangatang-energy' ),
-							'default'   => me_default_about_timeline(),
-							'subfields' => array(
-								array( 'key' => 'year', 'type' => 'text', 'label' => __( 'Year / phase', 'manangatang-energy' ) ),
-								array( 'key' => 'title', 'type' => 'text', 'label' => __( 'Title', 'manangatang-energy' ) ),
-								array( 'key' => 'text', 'type' => 'textarea', 'label' => __( 'Description', 'manangatang-energy' ) ),
 							),
 						),
 					),

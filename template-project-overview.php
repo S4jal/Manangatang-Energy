@@ -92,7 +92,7 @@ $me_img = get_template_directory_uri() . '/assets/img';
 					<div class="mt-5 h-1 w-16 rounded-full bg-gradient-to-r from-grass-500 to-lime-accent"></div>
 					<ul class="mt-8 space-y-4">
 						<?php foreach ( me_about_safety() as $me_sf ) : ?>
-							<li class="flex items-start gap-3"><i data-lucide="check-circle-2" class="mt-0.5 h-5 w-5 shrink-0 text-grass-500"></i><span class="text-sm leading-relaxed text-ink-700/85"><?php echo esc_html( isset( $me_sf['text'] ) ? $me_sf['text'] : '' ); ?></span></li>
+							<li class="flex items-start gap-3"><i data-lucide="<?php echo esc_attr( ! empty( $me_sf['icon'] ) ? $me_sf['icon'] : 'check-circle-2' ); ?>" class="mt-0.5 h-5 w-5 shrink-0 text-grass-500"></i><span class="text-sm leading-relaxed text-ink-700/85"><?php echo esc_html( isset( $me_sf['text'] ) ? $me_sf['text'] : '' ); ?></span></li>
 						<?php endforeach; ?>
 					</ul>
 				</div>
