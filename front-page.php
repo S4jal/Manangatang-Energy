@@ -87,12 +87,9 @@ $site_url     = $me_site ? get_permalink( $me_site ) : '#';
 			<div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
 				<?php
 				foreach ( me_home_features() as $me_i => $me_card ) :
-					$me_num    = str_pad( $me_i + 1, 2, '0', STR_PAD_LEFT );
-					$me_mt     = ( 0 === $me_i % 2 ) ? 'lg:mt-0' : 'lg:mt-10';
 					$me_c_icon = ! empty( $me_card['icon'] ) ? $me_card['icon'] : 'zap';
 					?>
-					<article class="reveal tilt sheen group relative overflow-hidden rounded-3xl border border-ink-100 bg-white p-7 shadow-sm hover:shadow-2xl hover:shadow-grass-600/10 <?php echo esc_attr( $me_mt ); ?>">
-						<span class="pointer-events-none absolute -right-3 -top-4 text-7xl font-extrabold text-ink-50 transition group-hover:text-grass-50"><?php echo esc_html( $me_num ); ?></span>
+					<article class="reveal tilt sheen group relative flex h-full flex-col overflow-hidden rounded-3xl border border-ink-100 bg-white p-7 shadow-sm hover:shadow-2xl hover:shadow-grass-600/10">
 						<span class="tilt-pop relative grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-ink-800 to-ink-900 text-grass-400 shadow-lg shadow-ink-900/20"><i data-lucide="<?php echo esc_attr( $me_c_icon ); ?>" class="icon-spin h-6 w-6"></i></span>
 						<h3 class="relative mt-5 text-base font-bold text-ink-900"><?php echo esc_html( isset( $me_card['title'] ) ? $me_card['title'] : '' ); ?></h3>
 						<p class="relative mt-2 text-sm leading-relaxed text-ink-700/70"><?php echo esc_html( isset( $me_card['text'] ) ? $me_card['text'] : '' ); ?></p>
