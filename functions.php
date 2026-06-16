@@ -475,6 +475,57 @@ function me_default_site_maps() {
 }
 
 /**
+ * Map legend rows — homepage Location band + The Site reference mapping.
+ * Each: array( 'icon' => string, 'color' => string, 'label' => string ).
+ * Stored as JSON via a repeater; falls back to the supplied defaults.
+ *
+ * @param string  $key      Settings key.
+ * @param array[] $defaults Fallback rows.
+ * @return array[]
+ */
+function me_legend_items( $key, $defaults ) {
+	$raw   = me_opt( $key );
+	$items = $raw ? json_decode( $raw, true ) : array();
+	return ( is_array( $items ) && ! empty( $items ) ) ? $items : $defaults;
+}
+
+/**
+ * Default legend for the homepage Location band.
+ *
+ * @return array[]
+ */
+function me_default_home_legend() {
+	return array(
+		array( 'icon' => 'star', 'color' => '#e3342f', 'label' => 'Proposed BESS Location' ),
+		array( 'icon' => 'square', 'color' => '#e9b949', 'label' => 'Approximate Land Boundary' ),
+	);
+}
+
+/**
+ * Default legend for The Site reference mapping.
+ *
+ * @return array[]
+ */
+function me_default_sitemap_legend() {
+	return array(
+		array( 'icon' => 'square', 'color' => '#e9b949', 'label' => 'Site' ),
+		array( 'icon' => 'star', 'color' => '#e3342f', 'label' => 'Proposed BESS location' ),
+	);
+}
+
+/**
+ * Echo a single legend row's icon (Lucide), tinted to the chosen colour.
+ *
+ * @param array $item Legend row.
+ */
+function me_legend_icon( $item ) {
+	$icon  = ! empty( $item['icon'] ) ? $item['icon'] : 'dot';
+	$color = ! empty( $item['color'] ) ? $item['color'] : '';
+	$style = $color ? ' style="color:' . esc_attr( $color ) . ';fill:' . esc_attr( $color ) . '"' : '';
+	printf( '<i data-lucide="%s" class="h-3 w-3 shrink-0"%s aria-hidden="true"></i>', esc_attr( $icon ), $style );
+}
+
+/**
  * FAQ items (managed in Customization → FAQs).
  * Each: array( 'category', 'question', 'answer' ).
  *

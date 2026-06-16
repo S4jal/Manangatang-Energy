@@ -473,6 +473,8 @@ function me_icon_choices() {
 		'linkedin', 'facebook', 'twitter', 'instagram', 'youtube', 'github', 'twitch', 'rss',
 		// Brand / misc.
 		'zap', 'battery-charging', 'sun', 'leaf', 'shield', 'check-circle-2', 'star', 'heart', 'dot',
+		// Legend / map markers.
+		'square', 'circle', 'triangle', 'diamond', 'hexagon', 'pin', 'flag',
 		// Safety / monitoring.
 		'shield-check', 'siren', 'flame', 'bell', 'activity', 'volume-2', 'cable', 'alert-triangle', 'eye', 'lock', 'thermometer', 'wrench',
 	);

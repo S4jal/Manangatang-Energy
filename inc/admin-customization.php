@@ -242,6 +242,18 @@ function me_page_schema() {
 						array( 'key' => 'loc_heading', 'label' => __( 'Heading', 'manangatang-energy' ), 'type' => 'text', 'default' => 'Project Location' ),
 						array( 'key' => 'loc_text', 'label' => __( 'Text', 'manangatang-energy' ), 'type' => 'textarea', 'default' => 'The project is located north of Manangatang in the Mallee region of north-west Victoria.' ),
 						array( 'key' => 'loc_map', 'label' => __( 'Map image', 'manangatang-energy' ), 'type' => 'image' ),
+						array(
+							'key'       => 'home_legend',
+							'label'     => __( 'Map legend', 'manangatang-energy' ),
+							'type'      => 'repeater',
+							'add_label' => __( 'Add legend item', 'manangatang-energy' ),
+							'default'   => me_default_home_legend(),
+							'subfields' => array(
+								array( 'key' => 'icon', 'type' => 'icon', 'label' => __( 'Icon', 'manangatang-energy' ) ),
+								array( 'key' => 'color', 'type' => 'text', 'label' => __( 'Colour (hex e.g. #e3342f)', 'manangatang-energy' ) ),
+								array( 'key' => 'label', 'type' => 'text', 'label' => __( 'Label', 'manangatang-energy' ) ),
+							),
+						),
 
 						array( 'type' => 'subheading', 'label' => __( 'Column 2 — About the Project', 'manangatang-energy' ) ),
 						array( 'key' => 'aboutband_heading', 'label' => __( 'Heading', 'manangatang-energy' ), 'type' => 'text', 'default' => 'About the Project' ),
@@ -385,6 +397,19 @@ function me_page_schema() {
 							'subfields' => array(
 								array( 'key' => 'image', 'type' => 'image', 'label' => __( 'Image', 'manangatang-energy' ) ),
 								array( 'key' => 'caption', 'type' => 'textarea', 'label' => __( 'Caption', 'manangatang-energy' ) ),
+							),
+						),
+						array( 'type' => 'subheading', 'label' => __( 'Legend (shown on the first figure)', 'manangatang-energy' ) ),
+						array(
+							'key'       => 'sitemap_legend',
+							'label'     => __( 'Map legend', 'manangatang-energy' ),
+							'type'      => 'repeater',
+							'add_label' => __( 'Add legend item', 'manangatang-energy' ),
+							'default'   => me_default_sitemap_legend(),
+							'subfields' => array(
+								array( 'key' => 'icon', 'type' => 'icon', 'label' => __( 'Icon', 'manangatang-energy' ) ),
+								array( 'key' => 'color', 'type' => 'text', 'label' => __( 'Colour (hex e.g. #e3342f)', 'manangatang-energy' ) ),
+								array( 'key' => 'label', 'type' => 'text', 'label' => __( 'Label', 'manangatang-energy' ) ),
 							),
 						),
 					),
