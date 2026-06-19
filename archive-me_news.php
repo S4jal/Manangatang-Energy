@@ -26,7 +26,7 @@ $me_featured = ! empty( $me_posts ) ? array_shift( $me_posts ) : 0;
 		<div data-depth="0.12" class="hero-grid pointer-events-none absolute inset-0"></div>
 		<div data-depth="0.28" class="hero-mesh pointer-events-none absolute inset-0"></div>
 		<div data-parallax="-0.06" class="blob pointer-events-none absolute -right-24 top-10 h-72 w-72 bg-grass-100/50 blur-3xl"></div>
-		<div class="glow-dot pointer-events-none absolute left-[7%] top-[46%] hidden h-2.5 w-2.5 rounded-full bg-grass-500 lg:block"></div>
+		<div class="glow-dot pointer-events-none absolute right-[10%] bottom-[16%] hidden h-2.5 w-2.5 rounded-full bg-grass-500 lg:block"></div>
 		<div class="particle pointer-events-none absolute right-[16%] top-[32%] hidden h-2 w-2 rounded-full bg-lime-accent lg:block" style="animation-delay:.6s"></div>
 		<div data-parallax="0.05" class="orb slow pointer-events-none absolute right-[18%] bottom-0 h-48 w-48 rounded-full bg-lime-accent/15 blur-2xl"></div>
 

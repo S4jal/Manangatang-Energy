@@ -39,8 +39,8 @@ $me_img = get_template_directory_uri() . '/assets/img';
 
 					<div class="mt-8 grid gap-4 sm:grid-cols-2">
 						<?php foreach ( me_site_glance_cards() as $me_gc ) : ?>
-							<div class="tilt group rounded-2xl border border-ink-100 bg-white p-5 shadow-sm transition hover:shadow-xl hover:shadow-grass-600/10">
-								<span class="tilt-pop grid h-11 w-11 place-items-center rounded-xl bg-grass-50 text-grass-600 transition group-hover:bg-grass-500 group-hover:text-white"><i data-lucide="<?php echo esc_attr( ! empty( $me_gc['icon'] ) ? $me_gc['icon'] : 'check' ); ?>" class="h-5 w-5"></i></span>
+							<div class="tilt sheen reveal group relative overflow-hidden rounded-3xl border border-ink-100 bg-white p-5 shadow-sm transition hover:shadow-2xl hover:shadow-grass-600/10" data-tilt="3.5">
+								<span class="tilt-pop grid h-11 w-11 place-items-center rounded-xl bg-gradient-to-br from-ink-800 to-ink-900 text-grass-400 shadow-lg shadow-ink-900/20"><i data-lucide="<?php echo esc_attr( ! empty( $me_gc['icon'] ) ? $me_gc['icon'] : 'check' ); ?>" class="h-5 w-5"></i></span>
 								<h3 class="mt-4 text-xs font-bold uppercase tracking-[0.18em] text-grass-600"><?php echo esc_html( $me_gc['label'] ?? '' ); ?></h3>
 								<p class="mt-1.5 text-sm leading-relaxed text-ink-700/80"><?php echo esc_html( $me_gc['text'] ?? '' ); ?></p>
 							</div>
@@ -92,11 +92,10 @@ $me_img = get_template_directory_uri() . '/assets/img';
 					foreach ( $me_maps as $me_mi => $me_mp ) :
 						$me_wide = ( 1 === $me_mn % 2 && $me_mi === $me_mn - 1 );
 						$me_span = $me_wide ? ' lg:col-span-2' : '';
-						$me_asp  = $me_wide ? 'aspect-[5/2]' : 'aspect-[3/2]';
 						?>
 						<figure class="reveal group overflow-hidden rounded-3xl border border-ink-100 bg-white shadow-lg shadow-ink-900/5<?php echo esc_attr( $me_span ); ?>">
 							<div class="overflow-hidden">
-								<img src="<?php echo esc_url( $me_mp['image'] ); ?>" alt="" class="<?php echo esc_attr( $me_asp ); ?> w-full bg-white object-contain p-2 transition duration-700 group-hover:scale-105" />
+								<img src="<?php echo esc_url( $me_mp['image'] ); ?>" alt="" class="block h-auto w-full transition duration-700 group-hover:scale-105" />
 							</div>
 							<figcaption class="p-6 text-sm leading-relaxed text-ink-700/75">
 								<?php if ( 0 === $me_mi ) : ?>

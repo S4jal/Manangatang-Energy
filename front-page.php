@@ -53,7 +53,7 @@ $site_url     = $me_site ? get_permalink( $me_site ) : '#';
 					<?php me_multiline( 'home_hero_intro', "Located near Manangatang in Victoria's Mallee region, the project is exploring utility-scale battery energy storage to support grid reliability and renewable energy integration." ); ?>
 				</p>
 
-				<div class="hero-anim d5 mt-9 flex flex-wrap items-center gap-3">
+				<div class="hero-anim d5 mt-9 flex flex-wrap items-center gap-4">
 					<a href="<?php echo esc_url( me_opt( 'home_btn1_link', $overview_url ) ); ?>" class="magnetic group inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-grass-500 to-grass-600 px-6 py-3.5 text-sm font-bold uppercase tracking-wide text-white shadow-xl shadow-grass-600/30 transition hover:shadow-2xl hover:shadow-grass-600/40">
 						<?php echo esc_html( me_opt( 'home_btn1_text', 'Project Overview' ) ); ?>
 						<i data-lucide="arrow-right" class="h-4 w-4 transition group-hover:translate-x-1"></i>
@@ -89,10 +89,10 @@ $site_url     = $me_site ? get_permalink( $me_site ) : '#';
 				foreach ( me_home_features() as $me_i => $me_card ) :
 					$me_c_icon = ! empty( $me_card['icon'] ) ? $me_card['icon'] : 'zap';
 					?>
-					<article class="reveal tilt sheen group relative flex h-full flex-col overflow-hidden rounded-3xl border border-ink-100 bg-white p-7 shadow-sm hover:shadow-2xl hover:shadow-grass-600/10">
-						<span class="tilt-pop relative grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-ink-800 to-ink-900 text-grass-400 shadow-lg shadow-ink-900/20"><i data-lucide="<?php echo esc_attr( $me_c_icon ); ?>" class="icon-spin h-6 w-6"></i></span>
-						<h3 class="relative mt-5 text-base font-bold text-ink-900"><?php echo esc_html( isset( $me_card['title'] ) ? $me_card['title'] : '' ); ?></h3>
-						<p class="relative mt-2 text-sm leading-relaxed text-ink-700/70"><?php echo esc_html( isset( $me_card['text'] ) ? $me_card['text'] : '' ); ?></p>
+					<article class="reveal tilt sheen group relative flex h-full flex-col overflow-hidden rounded-3xl border border-ink-100 bg-white p-7 shadow-sm transition hover:shadow-2xl hover:shadow-grass-600/10">
+						<span class="tilt-pop grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-ink-800 to-ink-900 text-grass-400 shadow-lg shadow-ink-900/20"><i data-lucide="<?php echo esc_attr( $me_c_icon ); ?>" class="h-6 w-6"></i></span>
+						<h3 class="mt-5 text-base font-bold text-ink-900"><?php echo esc_html( isset( $me_card['title'] ) ? $me_card['title'] : '' ); ?></h3>
+						<p class="mt-2 text-sm leading-relaxed text-ink-700/70"><?php echo esc_html( isset( $me_card['text'] ) ? $me_card['text'] : '' ); ?></p>
 					</article>
 				<?php endforeach; ?>
 			</div>
@@ -118,8 +118,8 @@ $site_url     = $me_site ? get_permalink( $me_site ) : '#';
 						foreach ( me_homesite_items() as $me_si ) :
 							$me_si_icon = ! empty( $me_si['icon'] ) ? $me_si['icon'] : 'check';
 							?>
-							<li class="group flex items-center gap-4 border-b border-ink-100 py-4 transition hover:pl-2">
-								<span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-grass-50 text-grass-600 transition group-hover:bg-grass-500 group-hover:text-white"><i data-lucide="<?php echo esc_attr( $me_si_icon ); ?>" class="h-5 w-5"></i></span>
+							<li class="group flex items-center gap-4 border-b border-ink-100 py-4 transition-all duration-300 ease-in-out hover:pl-2">
+								<span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-grass-50 text-grass-600 transition duration-300 ease-in-out group-hover:bg-grass-500 group-hover:text-white"><i data-lucide="<?php echo esc_attr( $me_si_icon ); ?>" class="h-5 w-5"></i></span>
 								<span class="text-sm font-medium text-ink-800"><?php echo esc_html( isset( $me_si['text'] ) ? $me_si['text'] : '' ); ?></span>
 							</li>
 						<?php endforeach; ?>
@@ -188,10 +188,10 @@ $site_url     = $me_site ? get_permalink( $me_site ) : '#';
 					$me_bs      = $me_bstyles[ $me_bi % 3 ];
 					$me_st_icon = ! empty( $me_step['icon'] ) ? $me_step['icon'] : 'zap';
 					?>
-					<div class="reveal zoom tilt group relative flex-1 rounded-3xl border border-white bg-white/90 p-7 shadow-lg shadow-grass-900/5 backdrop-blur duration-300 hover:shadow-2xl <?php echo esc_attr( $me_bs['hov'] ); ?>">
+					<div class="reveal zoom tilt sheen group relative flex-1 overflow-hidden rounded-3xl border border-white bg-white/90 p-7 shadow-lg shadow-grass-900/5 backdrop-blur duration-300 hover:shadow-2xl <?php echo esc_attr( $me_bs['hov'] ); ?>">
 						<span class="pointer-events-none absolute right-6 top-5 text-6xl font-extrabold leading-none text-grass-100 transition <?php echo esc_attr( $me_bs['numhov'] ); ?>"><?php echo (int) $me_bi + 1; ?></span>
 						<span class="relative z-10 grid h-16 w-16 place-items-center rounded-2xl bg-gradient-to-br <?php echo esc_attr( $me_bs['grad'] . ' ' . $me_bs['ic'] . ' shadow-lg ' . $me_bs['sh'] ); ?> transition group-hover:scale-105">
-							<i data-lucide="<?php echo esc_attr( $me_st_icon ); ?>" class="icon-spin h-7 w-7"></i>
+							<i data-lucide="<?php echo esc_attr( $me_st_icon ); ?>" class="h-7 w-7"></i>
 						</span>
 						<h3 class="mt-6 text-base font-extrabold uppercase tracking-[0.15em] text-ink-900"><?php echo esc_html( isset( $me_step['title'] ) ? $me_step['title'] : '' ); ?></h3>
 						<p class="mt-2 text-sm leading-relaxed text-ink-700/70"><?php echo esc_html( isset( $me_step['text'] ) ? $me_step['text'] : '' ); ?></p>

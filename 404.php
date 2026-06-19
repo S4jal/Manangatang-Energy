@@ -15,7 +15,7 @@ get_header();
 		<div data-depth="0.12" class="hero-grid pointer-events-none absolute inset-0"></div>
 		<div data-depth="0.28" class="hero-mesh pointer-events-none absolute inset-0"></div>
 		<div data-parallax="-0.06" class="blob pointer-events-none absolute -right-24 top-10 h-72 w-72 bg-grass-100/50 blur-3xl"></div>
-		<div class="glow-dot pointer-events-none absolute left-[10%] top-[42%] hidden h-2.5 w-2.5 rounded-full bg-grass-500 lg:block"></div>
+		<div class="glow-dot pointer-events-none absolute right-[10%] bottom-[20%] hidden h-2.5 w-2.5 rounded-full bg-grass-500 lg:block"></div>
 
 		<div class="relative mx-auto flex min-h-[80vh] max-w-3xl flex-col items-center justify-center px-4 py-32 text-center sm:px-6 lg:px-8">
 			<span class="hero-anim d1 text-8xl font-extrabold tracking-tight h-gradient sm:text-9xl">404</span>

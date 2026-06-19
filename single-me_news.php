@@ -116,7 +116,7 @@ while ( have_posts() ) :
 			<header class="relative overflow-hidden bg-ink-50">
 				<div data-depth="0.12" class="hero-grid pointer-events-none absolute inset-0"></div>
 				<div data-depth="0.28" class="hero-mesh pointer-events-none absolute inset-0"></div>
-				<div class="glow-dot pointer-events-none absolute left-[10%] top-[42%] hidden h-2.5 w-2.5 rounded-full bg-grass-500 lg:block"></div>
+				<div class="glow-dot pointer-events-none absolute right-[10%] bottom-[20%] hidden h-2.5 w-2.5 rounded-full bg-grass-500 lg:block"></div>
 
 				<div class="relative mx-auto max-w-3xl px-4 pb-12 pt-36 text-center sm:px-6 lg:px-8 lg:pt-44">
 					<a href="<?php echo esc_url( $me_news_url ); ?>" class="hero-anim d1 inline-flex items-center gap-1.5 text-sm font-semibold text-grass-700 transition hover:gap-2.5"><i data-lucide="arrow-left" class="h-4 w-4"></i> <?php echo esc_html( me_opt( 'news_hero_eyebrow', 'Newsroom' ) ); ?></a>

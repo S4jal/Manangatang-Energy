@@ -211,7 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const isFinePointer = window.matchMedia('(pointer: fine)').matches;
   if (isFinePointer) {
     document.querySelectorAll('.tilt').forEach(card => {
-      const S = 9; // tilt strength (deg)
+      const S = parseFloat(card.dataset.tilt) || 9; // tilt strength (deg); override per-card with data-tilt
       card.addEventListener('mousemove', (e) => {
         const r = card.getBoundingClientRect();
         const px = (e.clientX - r.left) / r.width - 0.5;
@@ -223,12 +223,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ---------- Magnetic buttons ---------- */
+    const clamp = (v, max) => Math.max(-max, Math.min(max, v));
     document.querySelectorAll('.magnetic').forEach(btn => {
+      const MAX = 5; // px cap so neighbouring buttons never collide
       btn.addEventListener('mousemove', (e) => {
         const r = btn.getBoundingClientRect();
         const x = e.clientX - r.left - r.width / 2;
         const y = e.clientY - r.top - r.height / 2;
-        btn.style.transform = `translate(${(x * 0.25).toFixed(1)}px, ${(y * 0.4).toFixed(1)}px)`;
+        btn.style.transform = `translate(${clamp(x * 0.12, MAX).toFixed(1)}px, ${clamp(y * 0.12, MAX).toFixed(1)}px)`;
       });
       btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
     });

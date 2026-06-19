@@ -139,7 +139,7 @@ foreach ( $me_all_docs as $me_i => $me_doc ) {
 		<div data-depth="0.12" class="hero-grid pointer-events-none absolute inset-0"></div>
 		<div data-depth="0.28" class="hero-mesh pointer-events-none absolute inset-0"></div>
 		<div data-parallax="-0.06" class="blob pointer-events-none absolute -right-24 top-10 h-72 w-72 bg-grass-100/50 blur-3xl"></div>
-		<div class="glow-dot pointer-events-none absolute left-[7%] top-[46%] hidden h-2.5 w-2.5 rounded-full bg-grass-500 lg:block"></div>
+		<div class="glow-dot pointer-events-none absolute right-[10%] bottom-[16%] hidden h-2.5 w-2.5 rounded-full bg-grass-500 lg:block"></div>
 		<div class="particle pointer-events-none absolute right-[16%] top-[32%] hidden h-2 w-2 rounded-full bg-lime-accent lg:block" style="animation-delay:.6s"></div>
 
 		<div class="relative mx-auto max-w-7xl px-4 pb-20 pt-36 sm:px-6 lg:px-8 lg:pb-24 lg:pt-44">
